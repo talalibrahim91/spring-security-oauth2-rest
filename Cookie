@@ -1,0 +1,14 @@
+// Store Access Token in a cookie
+
+$scope.GetAuthorizeData = function () {
+    $http({
+        method: 'GET',
+        url: "/api/Values",
+        headers: { 'authorization': 'bearer <myTokenId>' },
+    })
+    .success(function (data) {
+        $cookies.put('token', data);
+    }).error(function () {
+        alert("Failed :(");
+    });
+};
